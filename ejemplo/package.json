@@ -1,0 +1,14 @@
+{
+  "name": "ejemplo",
+  "version": "1.0.0",
+  "main": "ejemplo.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
