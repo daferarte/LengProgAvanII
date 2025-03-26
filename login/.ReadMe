@@ -1,0 +1,6 @@
+# dependencias necesarias 
+npm i express bcryptjs jsonwebtoken dotenv
+# dependencias para pruebas
+npm i --save-dev jest supertest nodemon
+
+
