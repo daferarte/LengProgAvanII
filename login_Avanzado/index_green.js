@@ -1,6 +1,5 @@
 const express = require('express');
-const { authenticateUser } = require('./auth');
-const { isPasswordSecure } = require('./passwordValidator')
+const {authenticateUser, isPasswordSecure} = require('./auth');
 require('dotenv').config();
 
 const app = express();
@@ -17,7 +16,7 @@ app.post('/login', (req, res)=>{
     }
 
     const token = authenticateUser(username, password);
-    if (token === 'Credenciales invalidas'){
+    if (token == 'Credenciales invalidas'){
         return res.status(401).json({error: token});
     }
 
