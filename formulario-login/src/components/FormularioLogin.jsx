@@ -1,37 +1,47 @@
 import React, {useState} from 'react';
+import { useFormularioLogin } from '../hooks/useFormularioLogin';
+
+
 
 function FormularioLogin(){
-    const [usuario, setUsuario]=useState('');
-    const [clave, setClave]= useState('');
-    const [errores, setErrores]= useState({});
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newErrors = {};
-
-        if (!usuario) newErrors.usuario='usuaio requerido';
-        if (!clave) newErrors.clave='contrasena requerida';
-        setErrores(newErrors);
-    };
+    
+    const {
+        usuario,
+        clave,
+        errores,
+        mensaje,
+        handleChange,
+        handleSubmit
+    } = useFormularioLogin();
 
     return(
         <form onSubmit={handleSubmit}>
-            <input
-                placeholder='Usuario'
-                value={usuario}
-                onChange={(e)=> setUsuario(e.target.value)}
-            />
-            {errores.usuario && <p>{errores.usuario}</p>}
+            <div>
+                <input
+                    type='text'
+                    name='usuario'
+                    placeholder='Usuario'
+                    value={usuario}
+                    onChange={handleChange}
+                />
+                {errores.usuario && <p>{errores.usuario}</p>}
+            </div>
+            <div>
+                <input
+                    type='password'
+                    name='clave'
+                    placeholder='Contrasena'
+                    value={clave}
+                    onChange={handleChange}
+                />
 
-            <input
-                type='password'
-                placeholder='Contrasena'
-                value={clave}
-                onChange={(e)=> setClave(e.target.value)}
-            />
-            {errores.clave && <p>{errores.clave}</p>}
-
+                {Array.isArray(errores.clave)
+                ? errores.clave.map((err, i) => <p key={i}>{err}</p>)
+                : errores.clave && <p>{errores.clave}</p> }
+            </div>
             <button type='submit'>Iniciar sesion</button>
+
+            {mensaje && <p>{mensaje}</p>}
         </form>
     );
 }

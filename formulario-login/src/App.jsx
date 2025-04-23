@@ -8,8 +8,6 @@ function App() {
     <>
       <h1>hola</h1>
       <FormularioLogin />
-      <FormularioLogin />
-      <FormularioLogin />
     </>
   )
 }
